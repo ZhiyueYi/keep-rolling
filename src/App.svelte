@@ -1,4 +1,5 @@
 <script>
+  import './../node_modules/bulma/css/bulma.css';
   import Roller from './components/Roller.svelte';
   import Settings from './components/Settings.svelte';
   import Control from './components/Control.svelte';
@@ -6,32 +7,23 @@
 
 <style>
   main {
-    text-align: center;
-    padding: 1em;
-    max-width: 1000px;
+    width: 90%;
     margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .roller {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .setting-panel {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
   }
 </style>
 
 <main>
-  <div class="roller">
-    <Roller />
-    <Control />
+  <h1 class="title has-text-centered">Keep Rolling!</h1>
+  <div class="columns">
+    <div class="column is-half is-full-tablet">
+      <Roller />
+      <Control />
+    </div>
+    <div class="column is-half is-full-tablet">
+      <Settings />
+    </div>
   </div>
-  <div class="setting-panel">
-    <Settings />
-  </div>
+
 </main>

@@ -10,14 +10,14 @@
   }
 </script>
 
-<style>
-
-</style>
-
 <div>
   {#if $rolling}
-    <button on:click={handleClickStop}>Stop</button>
+    <button class="button is-warning is-fullwidth" on:click={handleClickStop}>
+      Stop
+    </button>
   {:else}
-    <button on:click={handleClickStart}>Start</button>
+    <button class="button is-success is-fullwidth" on:click={handleClickStart}>
+      Start
+    </button>
   {/if}
 </div>
