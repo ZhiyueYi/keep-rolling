@@ -1,32 +1,37 @@
 <script>
   import Roller from './components/Roller.svelte';
-  import SettingPanel from './components/SettingPanel.svelte';
-  export let name;
+  import Settings from './components/Settings.svelte';
+  import Control from './components/Control.svelte';
 </script>
 
 <style>
   main {
     text-align: center;
     padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
+  .roller {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
+  .setting-panel {
   }
 </style>
 
 <main>
-  <Roller />
-  <SettingPanel />
+  <div class="roller">
+    <Roller />
+    <Control />
+  </div>
+  <div class="setting-panel">
+    <Settings />
+  </div>
 </main>
