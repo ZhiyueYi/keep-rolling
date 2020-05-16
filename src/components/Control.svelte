@@ -15,6 +15,9 @@
 </style>
 
 <div>
-  <button on:click={handleClickStart}>Start</button>
-  <button on:click={handleClickStop}>Stop</button>
+  {#if $rolling}
+    <button on:click={handleClickStop}>Stop</button>
+  {:else}
+    <button on:click={handleClickStart}>Start</button>
+  {/if}
 </div>

@@ -8,7 +8,7 @@
   main {
     text-align: center;
     padding: 1em;
-    max-width: 800px;
+    max-width: 1000px;
     margin: auto;
     display: flex;
     align-items: center;
