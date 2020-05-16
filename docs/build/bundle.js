@@ -579,48 +579,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (49:8) {#if item.imageUrl}
-    function create_if_block_1(ctx) {
-    	let div;
-    	let figure;
-    	let img;
-    	let img_src_value;
-
-    	const block = {
-    		c: function create() {
-    			div = element("div");
-    			figure = element("figure");
-    			img = element("img");
-    			if (img.src !== (img_src_value = "https://bulma.io/images/placeholders/1280x960.png")) attr_dev(img, "src", img_src_value);
-    			attr_dev(img, "alt", "Placeholder image");
-    			add_location(img, file, 51, 14, 1341);
-    			attr_dev(figure, "class", "image is-4by3");
-    			add_location(figure, file, 50, 12, 1295);
-    			attr_dev(div, "class", "card-image");
-    			add_location(div, file, 49, 10, 1257);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, figure);
-    			append_dev(figure, img);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block_1.name,
-    		type: "if",
-    		source: "(49:8) {#if item.imageUrl}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (58:8) {#if item.label}
+    // (50:8) {#if item.label}
     function create_if_block(ctx) {
     	let div1;
     	let div0;
@@ -635,11 +594,11 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "is-text-medium");
-    			add_location(p, file, 60, 14, 1633);
+    			add_location(p, file, 52, 14, 1333);
     			attr_dev(div0, "class", "content");
-    			add_location(div0, file, 59, 12, 1596);
+    			add_location(div0, file, 51, 12, 1296);
     			attr_dev(div1, "class", "card-content");
-    			add_location(div1, file, 58, 10, 1556);
+    			add_location(div1, file, 50, 10, 1256);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -659,7 +618,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(58:8) {#if item.label}",
+    		source: "(50:8) {#if item.label}",
     		ctx
     	});
 
@@ -670,10 +629,8 @@ var app = (function () {
     function create_each_block(key_1, ctx) {
     	let div1;
     	let div0;
-    	let t0;
-    	let t1;
-    	let if_block0 = /*item*/ ctx[4].imageUrl && create_if_block_1(ctx);
-    	let if_block1 = /*item*/ ctx[4].label && create_if_block(ctx);
+    	let t;
+    	let if_block = /*item*/ ctx[4].label && create_if_block(ctx);
 
     	const block = {
     		key: key_1,
@@ -681,10 +638,8 @@ var app = (function () {
     		c: function create() {
     			div1 = element("div");
     			div0 = element("div");
-    			if (if_block0) if_block0.c();
-    			t0 = space();
-    			if (if_block1) if_block1.c();
-    			t1 = space();
+    			if (if_block) if_block.c();
+    			t = space();
     			attr_dev(div0, "class", "card svelte-10q3xp8");
     			toggle_class(div0, "card-flex-center", !/*item*/ ctx[4].imageUrl);
     			toggle_class(div0, "is-dark", /*$activeItem*/ ctx[1] === /*index*/ ctx[6]);
@@ -696,34 +651,21 @@ var app = (function () {
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
     			append_dev(div1, div0);
-    			if (if_block0) if_block0.m(div0, null);
-    			append_dev(div0, t0);
-    			if (if_block1) if_block1.m(div0, null);
-    			append_dev(div1, t1);
+    			if (if_block) if_block.m(div0, null);
+    			append_dev(div1, t);
     		},
     		p: function update(ctx, dirty) {
-    			if (/*item*/ ctx[4].imageUrl) {
-    				if (if_block0) ; else {
-    					if_block0 = create_if_block_1(ctx);
-    					if_block0.c();
-    					if_block0.m(div0, t0);
-    				}
-    			} else if (if_block0) {
-    				if_block0.d(1);
-    				if_block0 = null;
-    			}
-
     			if (/*item*/ ctx[4].label) {
-    				if (if_block1) {
-    					if_block1.p(ctx, dirty);
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
     				} else {
-    					if_block1 = create_if_block(ctx);
-    					if_block1.c();
-    					if_block1.m(div0, null);
+    					if_block = create_if_block(ctx);
+    					if_block.c();
+    					if_block.m(div0, null);
     				}
-    			} else if (if_block1) {
-    				if_block1.d(1);
-    				if_block1 = null;
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
     			}
 
     			if (dirty & /*$settings*/ 1) {
@@ -736,8 +678,7 @@ var app = (function () {
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div1);
-    			if (if_block0) if_block0.d();
-    			if (if_block1) if_block1.d();
+    			if (if_block) if_block.d();
     		}
     	};
 
@@ -898,33 +839,29 @@ var app = (function () {
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[8] = list[i];
-    	child_ctx[10] = i;
+    	child_ctx[7] = list[i];
+    	child_ctx[9] = i;
     	return child_ctx;
     }
 
-    // (56:10) {#each items as item, index (item.label)}
+    // (55:10) {#each items as item, index (item.label)}
     function create_each_block$1(key_1, ctx) {
     	let tr;
     	let td0;
-    	let t0_value = /*item*/ ctx[8].label + "";
+    	let t0_value = /*item*/ ctx[7].label + "";
     	let t0;
     	let t1;
     	let td1;
-    	let t2_value = /*item*/ ctx[8].probability + "";
+    	let t2_value = /*item*/ ctx[7].probability + "";
     	let t2;
     	let t3;
     	let td2;
-    	let t4_value = (/*item*/ ctx[8].imgUrl || "") + "";
-    	let t4;
-    	let t5;
-    	let td3;
     	let button;
-    	let t7;
+    	let t5;
     	let dispose;
 
     	function click_handler(...args) {
-    		return /*click_handler*/ ctx[4](/*index*/ ctx[10], ...args);
+    		return /*click_handler*/ ctx[4](/*index*/ ctx[9], ...args);
     	}
 
     	const block = {
@@ -939,21 +876,17 @@ var app = (function () {
     			t2 = text(t2_value);
     			t3 = space();
     			td2 = element("td");
-    			t4 = text(t4_value);
-    			t5 = space();
-    			td3 = element("td");
     			button = element("button");
     			button.textContent = "×";
-    			t7 = space();
-    			add_location(td0, file$1, 57, 14, 1322);
-    			add_location(td1, file$1, 58, 14, 1359);
-    			add_location(td2, file$1, 59, 14, 1402);
+    			t5 = space();
+    			add_location(td0, file$1, 56, 14, 1294);
+    			add_location(td1, file$1, 57, 14, 1331);
     			attr_dev(button, "class", "button is-small is-danger is-outlined");
     			attr_dev(button, "type", "button");
-    			add_location(button, file$1, 61, 16, 1494);
-    			attr_dev(td3, "class", "has-text-centered");
-    			add_location(td3, file$1, 60, 14, 1446);
-    			add_location(tr, file$1, 56, 12, 1302);
+    			add_location(button, file$1, 59, 16, 1422);
+    			attr_dev(td2, "class", "has-text-centered");
+    			add_location(td2, file$1, 58, 14, 1374);
+    			add_location(tr, file$1, 55, 12, 1274);
     			this.first = tr;
     		},
     		m: function mount(target, anchor, remount) {
@@ -965,19 +898,15 @@ var app = (function () {
     			append_dev(td1, t2);
     			append_dev(tr, t3);
     			append_dev(tr, td2);
-    			append_dev(td2, t4);
+    			append_dev(td2, button);
     			append_dev(tr, t5);
-    			append_dev(tr, td3);
-    			append_dev(td3, button);
-    			append_dev(tr, t7);
     			if (remount) dispose();
     			dispose = listen_dev(button, "click", click_handler, false, false, false);
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if (dirty & /*items*/ 1 && t0_value !== (t0_value = /*item*/ ctx[8].label + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*items*/ 1 && t2_value !== (t2_value = /*item*/ ctx[8].probability + "")) set_data_dev(t2, t2_value);
-    			if (dirty & /*items*/ 1 && t4_value !== (t4_value = (/*item*/ ctx[8].imgUrl || "") + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*items*/ 1 && t0_value !== (t0_value = /*item*/ ctx[7].label + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*items*/ 1 && t2_value !== (t2_value = /*item*/ ctx[7].probability + "")) set_data_dev(t2, t2_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(tr);
@@ -989,7 +918,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(56:10) {#each items as item, index (item.label)}",
+    		source: "(55:10) {#each items as item, index (item.label)}",
     		ctx
     	});
 
@@ -997,8 +926,8 @@ var app = (function () {
     }
 
     function create_fragment$1(ctx) {
-    	let div8;
     	let div7;
+    	let div6;
     	let div0;
     	let h10;
     	let t1;
@@ -1011,31 +940,26 @@ var app = (function () {
     	let t5;
     	let th2;
     	let t7;
-    	let th3;
-    	let t9;
     	let tbody;
     	let each_blocks = [];
     	let each_1_lookup = new Map();
-    	let t10;
-    	let div6;
-    	let h11;
-    	let t12;
+    	let t8;
     	let div5;
+    	let h11;
+    	let t10;
+    	let div4;
     	let div1;
     	let input0;
-    	let t13;
+    	let t11;
     	let div2;
     	let input1;
-    	let t14;
+    	let t12;
     	let div3;
-    	let input2;
-    	let t15;
-    	let div4;
     	let button;
     	let dispose;
     	let each_value = /*items*/ ctx[0];
     	validate_each_argument(each_value);
-    	const get_key = ctx => /*item*/ ctx[8].label;
+    	const get_key = ctx => /*item*/ ctx[7].label;
     	validate_each_keys(ctx, each_value, get_each_context$1, get_key);
 
     	for (let i = 0; i < each_value.length; i += 1) {
@@ -1046,8 +970,8 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div8 = element("div");
     			div7 = element("div");
+    			div6 = element("div");
     			div0 = element("div");
     			h10 = element("h1");
     			h10.textContent = "Items";
@@ -1062,90 +986,77 @@ var app = (function () {
     			th1.textContent = "Probability";
     			t5 = space();
     			th2 = element("th");
-    			th2.textContent = "Image";
+    			th2.textContent = "Action";
     			t7 = space();
-    			th3 = element("th");
-    			th3.textContent = "Action";
-    			t9 = space();
     			tbody = element("tbody");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			t10 = space();
-    			div6 = element("div");
+    			t8 = space();
+    			div5 = element("div");
     			h11 = element("h1");
     			h11.textContent = "Add New";
-    			t12 = space();
-    			div5 = element("div");
+    			t10 = space();
+    			div4 = element("div");
     			div1 = element("div");
     			input0 = element("input");
-    			t13 = space();
+    			t11 = space();
     			div2 = element("div");
     			input1 = element("input");
-    			t14 = space();
+    			t12 = space();
     			div3 = element("div");
-    			input2 = element("input");
-    			t15 = space();
-    			div4 = element("div");
     			button = element("button");
     			button.textContent = "+ Add";
     			attr_dev(h10, "class", "title");
     			add_location(h10, file$1, 43, 6, 880);
     			add_location(th0, file$1, 48, 12, 1052);
     			add_location(th1, file$1, 49, 12, 1080);
+    			attr_dev(th2, "class", "has-text-centered");
     			add_location(th2, file$1, 50, 12, 1114);
-    			attr_dev(th3, "class", "has-text-centered");
-    			add_location(th3, file$1, 51, 12, 1142);
     			add_location(tr, file$1, 47, 10, 1034);
     			add_location(thead, file$1, 46, 8, 1015);
-    			add_location(tbody, file$1, 54, 8, 1228);
+    			add_location(tbody, file$1, 53, 8, 1200);
     			attr_dev(table, "class", "table is-bordered is-striped is-narrow is-hoverable is-fullwidth");
     			add_location(table, file$1, 44, 6, 916);
     			attr_dev(div0, "class", "column is-full");
     			add_location(div0, file$1, 42, 4, 844);
     			attr_dev(h11, "class", "title");
-    			add_location(h11, file$1, 74, 6, 1862);
+    			add_location(h11, file$1, 72, 6, 1790);
     			attr_dev(input0, "class", "input");
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "placeholder", "Enter a label");
-    			add_location(input0, file$1, 77, 10, 1963);
+    			add_location(input0, file$1, 75, 10, 1891);
     			attr_dev(div1, "class", "column");
-    			add_location(div1, file$1, 76, 8, 1931);
+    			add_location(div1, file$1, 74, 8, 1859);
     			attr_dev(input1, "class", "input");
     			attr_dev(input1, "type", "number");
     			attr_dev(input1, "placeholder", "Enter probability weight");
-    			add_location(input1, file$1, 84, 10, 2163);
+    			add_location(input1, file$1, 82, 10, 2091);
     			attr_dev(div2, "class", "column");
-    			add_location(div2, file$1, 83, 8, 2131);
-    			attr_dev(input2, "class", "input");
-    			attr_dev(input2, "type", "text");
-    			attr_dev(input2, "placeholder", "Enter image URL (optional)");
-    			add_location(input2, file$1, 91, 10, 2382);
-    			attr_dev(div3, "class", "column");
-    			add_location(div3, file$1, 90, 8, 2350);
+    			add_location(div2, file$1, 81, 8, 2059);
     			attr_dev(button, "class", "button is-link is-outlined is-fullwidth");
     			attr_dev(button, "type", "button");
-    			add_location(button, file$1, 98, 10, 2611);
-    			attr_dev(div4, "class", "column has-text-right");
-    			add_location(div4, file$1, 97, 8, 2564);
-    			attr_dev(div5, "class", "columns");
-    			add_location(div5, file$1, 75, 6, 1900);
-    			attr_dev(div6, "class", "column is-full");
-    			add_location(div6, file$1, 73, 4, 1826);
-    			attr_dev(div7, "class", "columns is-multiline");
-    			add_location(div7, file$1, 41, 2, 804);
-    			attr_dev(div8, "class", "wrapper svelte-1xht16s");
-    			add_location(div8, file$1, 40, 0, 779);
+    			add_location(button, file$1, 89, 10, 2325);
+    			attr_dev(div3, "class", "column has-text-right");
+    			add_location(div3, file$1, 88, 8, 2278);
+    			attr_dev(div4, "class", "columns");
+    			add_location(div4, file$1, 73, 6, 1828);
+    			attr_dev(div5, "class", "column is-full");
+    			add_location(div5, file$1, 71, 4, 1754);
+    			attr_dev(div6, "class", "columns is-multiline");
+    			add_location(div6, file$1, 41, 2, 804);
+    			attr_dev(div7, "class", "wrapper svelte-1xht16s");
+    			add_location(div7, file$1, 40, 0, 779);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor, remount) {
-    			insert_dev(target, div8, anchor);
-    			append_dev(div8, div7);
-    			append_dev(div7, div0);
+    			insert_dev(target, div7, anchor);
+    			append_dev(div7, div6);
+    			append_dev(div6, div0);
     			append_dev(div0, h10);
     			append_dev(div0, t1);
     			append_dev(div0, table);
@@ -1156,40 +1067,33 @@ var app = (function () {
     			append_dev(tr, th1);
     			append_dev(tr, t5);
     			append_dev(tr, th2);
-    			append_dev(tr, t7);
-    			append_dev(tr, th3);
-    			append_dev(table, t9);
+    			append_dev(table, t7);
     			append_dev(table, tbody);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(tbody, null);
     			}
 
-    			append_dev(div7, t10);
-    			append_dev(div7, div6);
-    			append_dev(div6, h11);
-    			append_dev(div6, t12);
+    			append_dev(div6, t8);
     			append_dev(div6, div5);
-    			append_dev(div5, div1);
+    			append_dev(div5, h11);
+    			append_dev(div5, t10);
+    			append_dev(div5, div4);
+    			append_dev(div4, div1);
     			append_dev(div1, input0);
     			set_input_value(input0, /*newItem*/ ctx[1].label);
-    			append_dev(div5, t13);
-    			append_dev(div5, div2);
+    			append_dev(div4, t11);
+    			append_dev(div4, div2);
     			append_dev(div2, input1);
     			set_input_value(input1, /*newItem*/ ctx[1].probability);
-    			append_dev(div5, t14);
-    			append_dev(div5, div3);
-    			append_dev(div3, input2);
-    			set_input_value(input2, /*newItem*/ ctx[1].imgUrl);
-    			append_dev(div5, t15);
-    			append_dev(div5, div4);
-    			append_dev(div4, button);
+    			append_dev(div4, t12);
+    			append_dev(div4, div3);
+    			append_dev(div3, button);
     			if (remount) run_all(dispose);
 
     			dispose = [
     				listen_dev(input0, "input", /*input0_input_handler*/ ctx[5]),
     				listen_dev(input1, "input", /*input1_input_handler*/ ctx[6]),
-    				listen_dev(input2, "input", /*input2_input_handler*/ ctx[7]),
     				listen_dev(button, "click", /*handleClickAdd*/ ctx[2], false, false, false)
     			];
     		},
@@ -1208,15 +1112,11 @@ var app = (function () {
     			if (dirty & /*newItem*/ 2 && to_number(input1.value) !== /*newItem*/ ctx[1].probability) {
     				set_input_value(input1, /*newItem*/ ctx[1].probability);
     			}
-
-    			if (dirty & /*newItem*/ 2 && input2.value !== /*newItem*/ ctx[1].imgUrl) {
-    				set_input_value(input2, /*newItem*/ ctx[1].imgUrl);
-    			}
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div8);
+    			if (detaching) detach_dev(div7);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].d();
@@ -1286,11 +1186,6 @@ var app = (function () {
     		$$invalidate(1, newItem);
     	}
 
-    	function input2_input_handler() {
-    		newItem.imgUrl = this.value;
-    		$$invalidate(1, newItem);
-    	}
-
     	$$self.$capture_state = () => ({
     		settings,
     		items,
@@ -1315,8 +1210,7 @@ var app = (function () {
     		handleClickRemove,
     		click_handler,
     		input0_input_handler,
-    		input1_input_handler,
-    		input2_input_handler
+    		input1_input_handler
     	];
     }
 

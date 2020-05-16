@@ -46,15 +46,7 @@
         class="card"
         class:card-flex-center={!item.imageUrl}
         class:is-dark={$activeItem === index}>
-        {#if item.imageUrl}
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <img
-                src="https://bulma.io/images/placeholders/1280x960.png"
-                alt="Placeholder image" />
-            </figure>
-          </div>
-        {/if}
+
         {#if item.label}
           <div class="card-content">
             <div class="content">

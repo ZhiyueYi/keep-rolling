@@ -48,7 +48,6 @@
           <tr>
             <th>Label</th>
             <th>Probability</th>
-            <th>Image</th>
             <th class="has-text-centered">Action</th>
           </tr>
         </thead>
@@ -57,7 +56,6 @@
             <tr>
               <td>{item.label}</td>
               <td>{item.probability}</td>
-              <td>{item.imgUrl || ''}</td>
               <td class="has-text-centered">
                 <button
                   class="button is-small is-danger is-outlined"
@@ -87,13 +85,6 @@
             type="number"
             bind:value={newItem.probability}
             placeholder="Enter probability weight" />
-        </div>
-        <div class="column">
-          <input
-            class="input"
-            type="text"
-            bind:value={newItem.imgUrl}
-            placeholder="Enter image URL (optional)" />
         </div>
         <div class="column has-text-right">
           <button
