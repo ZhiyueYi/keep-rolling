@@ -1,13 +1,17 @@
 <script>
   import { settings, rolling, activeItem } from './../store';
+  import { rollingWithProbMap, generateProbMap } from './../utils';
   let rollingInterval;
+  let probMap = [];
+
+  settings.subscribe(setting => {
+    probMap = generateProbMap(setting.rollingItems);
+  });
 
   rolling.subscribe(isRolling => {
     if (isRolling) {
       rollingInterval = setInterval(() => {
-        const activeIndex = Math.floor(
-          Math.random() * ($settings.rollingItems.length || 0),
-        );
+        const activeIndex = rollingWithProbMap($settings.rollingItems, probMap);
         activeItem.set(activeIndex);
       }, 50);
     } else {
@@ -39,8 +43,6 @@
 
 <div class="wrapper">
   {#each $settings.rollingItems as item, index (item.label)}
-    <div class="item" class:active={$rolling && $activeItem === index}>
-      {item.label}
-    </div>
+    <div class="item" class:active={$activeItem === index}>{item.label}</div>
   {/each}
 </div>
