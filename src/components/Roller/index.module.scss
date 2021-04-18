@@ -1,0 +1,17 @@
+.display {
+  width: 50%;
+  min-width: 400px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.goButton {
+  margin-top: 10px;
+  height: 60px;
+  width: 60px;
+  border: none;
+  border-radius: 50%;
+}

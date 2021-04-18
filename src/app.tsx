@@ -1,20 +1,12 @@
-import { Logo } from './logo'
+import { Container } from './components/Container';
+import { SettingPanel } from './components/SettingPanel';
+import styles from './index.module.scss';
 
 export function App() {
   return (
-    <>
-      <Logo />
-      <p>Hello Vite + Preact!</p>
-      <p>
-        <a
-          class="link"
-          href="https://preactjs.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Preact
-        </a>
-      </p>
-    </>
-  )
+    <div className={styles.app}>
+      <Container />
+      <SettingPanel />
+    </div>
+  );
 }
